@@ -1,0 +1,3 @@
+verificar tipo da variável
+mudar tipo da variável
+printar coisas com variáveis

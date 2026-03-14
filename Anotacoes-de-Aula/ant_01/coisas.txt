@@ -1,0 +1,4 @@
+printar na tela
+criação de variável
+métodos de String (strip, replace, lower, upper)
+receber algo do usuário (input)

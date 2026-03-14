@@ -1,0 +1,4 @@
+importar coisas do google, gemini, os
+utilizar chave da API
+fazer uma pergunta para a IA
+pegar apenas o texto da resposta da pergunta
