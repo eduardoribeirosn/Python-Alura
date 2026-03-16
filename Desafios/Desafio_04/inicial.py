@@ -11,7 +11,7 @@ client_openai = OpenAI(
 lista_de_resenhas = []
 with open("Resenhas_App_ChatGPT.txt", "r", encoding="utf-8") as arquivo:
     for linha in arquivo:
-        lista_de_resenhas.append(linha + "\n")
+        lista_de_resenhas.append(linha.strip())
 
 # print(lista_de_resenhas)
 
@@ -34,25 +34,39 @@ for item in lista_de_resenhas:
 
     response_current = response.choices[0].message.content
 
+    print(response_current)
+
     response_current_formatted = response_current.replace("```json", "").replace("```", "").strip()
     response_current_formatted_json = json.loads(response_current_formatted)
 
     lista_json_AI.append(response_current_formatted_json)
 
     for item in response_current_formatted_json.values():
-        lista_text_responses.append(item)
+        lista_text_responses += item + "###"
 
 positiva = 0
 negativa = 0
 neutra = 0
 for itemLista in lista_json_AI:
-    if itemLista.avaliacao == "Positiva":
+    if itemLista["avaliacao"] == "Positiva":
         positiva += 1
-    elif itemLista.avaliacao == "Negativa":
+    elif itemLista["avaliacao"] == "Negativa":
         negativa += 1
-    elif itemLista.avaliacao == "Neutra":
+    elif itemLista["avaliacao"] == "Neutra":
         neutra += 1
 
 # SIMPLESMENTE CANSEI kkk, vou dormir que eu ganho MAIS............
 
 print(lista_json_AI)
+print()
+print()
+print()
+print("-----")
+print(positiva)
+print(neutra)
+print(negativa)
+print()
+print()
+print()
+print("-----")
+print(lista_text_responses)
